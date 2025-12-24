@@ -13,7 +13,7 @@ import {
   McpConfig,
 } from '../types/index.js';
 
-const DEFAULT_BASE_URL = 'https://api.thetaedgecloud.com';
+const DEFAULT_BASE_URL = 'https://ondemand.thetaedgecloud.com';
 
 export class ThetaApiClient {
   private apiKey: string;
