@@ -35,13 +35,17 @@ Add to your `claude_desktop_config.json`:
 ### For Claude Code
 
 ```bash
-claude mcp add theta-edgecloud -- npx @thetalabs/on-demand-api-mcp
+claude mcp add theta-edgecloud -e THETA_API_KEY=your-api-key-here -- npx @thetalabs/on-demand-api-mcp
 ```
 
-Then set your API key:
+Replace `your-api-key-here` with your actual API key.
+
+**Verify it's working:**
 ```bash
-export THETA_API_KEY="your-api-key-here"
+claude mcp list
 ```
+
+You should see `theta-edgecloud` with status `✓ Connected`.
 
 ## Getting Your API Key
 
