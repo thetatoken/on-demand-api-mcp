@@ -1,6 +1,6 @@
 {
   "name": "@thetalabs/on-demand-api-mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Official MCP server for Theta EdgeCloud On-Demand Model APIs",
   "main": "dist/index.js",
   "bin": {
