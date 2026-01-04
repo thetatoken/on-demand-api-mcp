@@ -33,7 +33,7 @@ export class ThetaApiClient {
 
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      'x-theta-api-key': this.apiKey,
+      'Authorization': `Bearer ${this.apiKey}`,
     };
 
     const options: RequestInit = {
