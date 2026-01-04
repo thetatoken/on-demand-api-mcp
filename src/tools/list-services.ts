@@ -55,28 +55,28 @@ function categorizeService(service: Service): string {
 
 function getInputExample(service: Service): Record<string, unknown> {
   const prediction = service.predictions?.[service.default_prediction];
-  if (!prediction?.input_vars) {
+  if (!prediction?.input_vars || typeof prediction.input_vars !== 'object') {
     return {};
   }
 
   const example: Record<string, unknown> = {};
-  for (const inputVar of prediction.input_vars) {
+  for (const [name, inputVar] of Object.entries(prediction.input_vars)) {
     if (inputVar.type === 'string') {
-      if (inputVar.name.includes('url') || inputVar.name.includes('filename')) {
-        example[inputVar.name] = 'https://example.com/file';
-      } else if (inputVar.name === 'prompt') {
-        example[inputVar.name] = 'Your prompt here';
+      if (name.includes('url') || name.includes('filename')) {
+        example[name] = 'https://example.com/file';
+      } else if (name === 'prompt') {
+        example[name] = 'Your prompt here';
       } else {
-        example[inputVar.name] = inputVar.default || 'string value';
+        example[name] = inputVar.default || 'string value';
       }
     } else if (inputVar.type === 'number' || inputVar.type === 'integer') {
-      example[inputVar.name] = inputVar.default || 1;
+      example[name] = inputVar.default || 1;
     } else if (inputVar.type === 'boolean') {
-      example[inputVar.name] = inputVar.default || false;
+      example[name] = inputVar.default || false;
     } else if (inputVar.type === 'array') {
-      example[inputVar.name] = inputVar.default || [];
+      example[name] = inputVar.default || [];
     } else {
-      example[inputVar.name] = inputVar.default || null;
+      example[name] = inputVar.default || null;
     }
   }
   return example;

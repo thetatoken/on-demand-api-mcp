@@ -33,23 +33,24 @@ export interface Prediction {
   instructions: string;
   cost: number;
   cost_divisor: number;
-  input_vars: InputVar[];
-  output_vars: OutputVar[];
+  input_vars: Record<string, InputVarSpec>;
+  output_vars: Record<string, OutputVarSpec>;
   external_price_tier?: string;
   variants?: string[];
 }
 
-export interface InputVar {
-  name: string;
+export interface InputVarSpec {
   type: string;
+  index?: number;
   description?: string;
   required?: boolean;
   default?: unknown;
 }
 
-export interface OutputVar {
-  name: string;
+export interface OutputVarSpec {
   type: string;
+  action?: string;
+  results_path?: string;
   description?: string;
 }
 

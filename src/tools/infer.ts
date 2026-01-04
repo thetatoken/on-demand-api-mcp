@@ -6,13 +6,13 @@ import { getClient } from '../api/client.js';
 
 export const inferToolDefinition = {
   name: 'infer',
-  description: 'Run AI inference on a Theta EdgeCloud model. Supports image generation, audio transcription, text generation, and more.',
+  description: 'Run AI inference on a Theta EdgeCloud model. Supports image generation, audio transcription, text generation, and more. IMPORTANT: Call list_services first to see available services and their required inputs.',
   inputSchema: {
     type: 'object' as const,
     properties: {
       service: {
         type: 'string',
-        description: 'Service alias (e.g., "whisper", "flux-1-schnell", "llama-3-1-8b")',
+        description: 'Service alias (e.g., "whisper"). Use list_services to see all available options.',
       },
       input: {
         type: 'object',
