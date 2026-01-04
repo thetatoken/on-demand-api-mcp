@@ -126,6 +126,10 @@ async function main() {
     process.exit(1);
   }
 
+  // Debug: Log API key info (for troubleshooting)
+  const apiKey = process.env.THETA_API_KEY;
+  console.error(`API Key received: length=${apiKey.length}, first10=${apiKey.substring(0, 10)}, last10=${apiKey.substring(apiKey.length - 10)}`);
+
   // Start the server with stdio transport
   const transport = new StdioServerTransport();
   await server.connect(transport);
